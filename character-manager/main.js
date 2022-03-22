@@ -5,7 +5,26 @@ async function getCharacter(){
     const api_url = 'https://character-database.becode.xyz/characters';
     try {
         const response = await axios.get(api_url);
-        console.log(response);
+        const datas = response.data;
+        console.log(datas);
+        
+        const cards = document.getElementById('cards');
+
+        //New HTML Dynamic
+        datas.forEach((data) => {
+           cards.innerHTML += 
+           `
+           <article id="card">
+                <div id="image">
+                    <img src="data:image/gif;base64,${data.image}" alt="image">
+                </div>
+                <h2>${data.name}</h2>
+                <p>${data.shortDescription}</p>
+                <input type="button" value="See character">
+           </article>
+           `;
+          
+        })
     }
     catch (err) {
         console.log(err);
