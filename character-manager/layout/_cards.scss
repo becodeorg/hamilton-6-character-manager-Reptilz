@@ -7,6 +7,7 @@
         background-color:#45364B;
         border-radius: 20px;
         margin-top: 30px;
+        margin-bottom: 30px;
         padding: 30px 15px;
         text-align: center;
         display: flex;
@@ -59,5 +60,26 @@
         color:#0e0b0c;
         transition: .5s;
         font-size: 2.2rem;
+    }
+}
+
+
+/***DESKTOP SCREEN***/
+@media screen and (min-width: 768px) {
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr;
+        grid-column-gap: 40px;
+        margin-right: 50px;
+        margin-left: 50px;
+    }
+
+    #add-character {
+        left: 50px;
+        font-size: 3rem;
+        &:hover{
+            font-size: 3.5rem;
+        }
     }
 }
