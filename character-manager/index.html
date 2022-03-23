@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Character Manager</title>
   </head>
   <body>
@@ -14,6 +15,10 @@
             <input class="header__search" id="searchbar" type="text" placeholder="Search character">
         </div>
     </header>
+    <!-----ADD NEW CHARACTER BTN------->
+    <div class="new_character">
+      <i id="add-character" class="fa-solid fa-circle-plus"></i>
+    </div>
 
     <!-------LIST OF CHARACTERS------->
     <section class="cards" id="cards">
@@ -25,11 +30,8 @@
         </article>
     </section>
 
-    <!-----ADD NEW CHARACTER BTN------->
-    <div class="add_btn">
-      <input id="add-btn" type="button" value="Add a new character to the collection">
-    </div>
 
+    <!-----SCRIPS------>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="./js/main.js"></script>
   </body>

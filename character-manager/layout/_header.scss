@@ -1,0 +1,22 @@
+.header {
+    width: 80%;
+    margin: 50px auto auto auto;
+    text-align: center;
+    &__title {
+      font-size: 2rem;
+      color: #2D2327;
+    }
+    &__search {
+      border-radius: 10px;
+      padding: 10px;
+      font-style: italic;
+      font-weight: bold;
+      width: 80%;
+      margin: auto;
+      margin-bottom: 30px;
+      border: none;
+      box-shadow: 10px 5px 5px #2D2327;
+      background-color: #b8bfd4;
+      border:none;   
+    }
+  }

@@ -1,0 +1,63 @@
+.cards {
+    margin: 50px 20px 0 20px;
+
+    .card {
+        box-shadow: 5px 5px 5px #2D2327;
+        color: #b8bfd4;
+        background-color:#45364B;
+        border-radius: 20px;
+        margin-top: 30px;
+        padding: 30px 15px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+
+        &__img {
+            border-radius: 50%;
+            box-shadow: 0 10px 20px rgb(0 0 0 / 0.5);
+        }
+
+        &__title {
+            margin-bottom: 15px;
+        }
+
+        &__description {
+            margin-top: 0;
+            opacity: .7;
+        }
+
+        &__btn {
+            border: none;
+            margin-top: 20px;
+            width: 11em;
+            padding: 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            background: #2D2327;
+            color: white;
+
+            &:hover{
+                background: #221b1e;
+                transition: .6s;
+            }
+        }
+    }
+}
+
+/***BTN ADD NEW CHARACTER***/
+#add-character {
+    cursor: pointer;
+    font-size: 2rem;
+    color: #2D2327;
+    position: absolute;
+    left: 25px;
+    &:hover{
+        color:#0e0b0c;
+        transition: .5s;
+        font-size: 2.2rem;
+    }
+}
