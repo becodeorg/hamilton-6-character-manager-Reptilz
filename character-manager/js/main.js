@@ -5,5 +5,7 @@ import './list';
 import './add';
 import './delete';
 import './update';
+import './search';
+import './details';
 
 

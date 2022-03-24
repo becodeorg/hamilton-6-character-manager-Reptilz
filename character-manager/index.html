@@ -12,7 +12,9 @@
     <header>
         <div class="header">
             <h1 class="header__title">Character Manager</h1>
-            <input class="header__search" id="searchbar" type="text" placeholder="Search character">
+          <div class="search-wrapper">
+              <input type="search" placeholder="Search character..." class="header__search" id="searchbar">
+          </div>
         </div>
     </header>
     <!-----ADD NEW CHARACTER BTN------->
@@ -21,14 +23,16 @@
     </div>
 
     <!-------LIST OF CHARACTERS------->
-    <section class="cards" id="cards">
-        <article class="card" id="card">
-            <img class="card__img" id="card-img" src="" alt="img">
-            <h2 class="card__title" id="card-name"></h2>
-            <p class="card__description" id="card-short-description"></p>
-            <input class="card__btn" id="card-btn" type="button" value="See character">
-        </article>
+    <section class="cards" id="cards" data-character-cards-container>
     </section>
+    <template data-card-template>
+        <article class="card" id="card">
+          <img class="card__img" id="card-img" alt="image" data-img />
+          <h2 class="card__title" id="card-name" data-name></h2>
+          <p class="card__description" id="card-short-description" data-description></p>
+          <input class="card__btn" type="button" value="See character" data-btn>
+        </article>
+    </template>
 
 
     <!-----SCRIPS------>

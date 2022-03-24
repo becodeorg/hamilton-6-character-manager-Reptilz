@@ -10,24 +10,27 @@ async function getCharacter(){
     const datas = response.data;
     console.log(datas);
 
-    const cards = document.getElementById('cards');
+    //fragment
+    const characterCardTemplate = document.querySelector("[data-card-template]");
+    const characterCardContainer = document.querySelector("[data-character-cards-container]");
 
     try {
-        //afficher les datas dans le HTML
-        datas.forEach((data) => {
-            cards.innerHTML +=
-            `
-            <article class="card" id="card">
-                <img class="card__img" id="card-img" src="data:image/gif;base64,${data.image}" alt="img">
-                <h2 class="card__title" id="card-name">${data.name}</h2>
-                <p class="card__description" id="card-short-description">${data.shortDescription}</p>
-                <input class="card__btn" id="card-btn" type="button" value="See character">
-            </article>
-            `
-        });
-        
+        datas.forEach(data => {
+            const card = characterCardTemplate.content.cloneNode(true).children[0];
+         
+            const cardImg = card.querySelector(["[data-img]"]);
+            const cardName = card.querySelector("[data-name]");
+            const cardDescription = card.querySelector("[data-description]");
+            const cardBtn = card.querySelector("[data-btn]");
+
+            cardName.textContent = data.name;
+            cardImg.src = "data:image/gif;base64," + data.image;
+            cardDescription.textContent = data.shortDescription;
+            cardBtn.setAttribute("id", data.id);
+            characterCardContainer.append(card);
+        })
     }
-    catch (err) {
+    catch(err) {
         console.log(err);
     }
 }
