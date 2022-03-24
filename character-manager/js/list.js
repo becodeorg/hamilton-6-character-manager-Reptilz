@@ -2,7 +2,7 @@ import '../style.scss';
 
 
 //list of characters
-async function getCharacter(){
+ async function getCharacter(){
     const api_url = 'https://character-database.becode.xyz/characters';
 
     //get des datas dans l'API
@@ -13,10 +13,33 @@ async function getCharacter(){
     //fragment
     const characterCardTemplate = document.querySelector("[data-card-template]");
     const characterCardContainer = document.querySelector("[data-character-cards-container]");
-    const searchInput = document.querySelector("[data-search]");
 
+
+
+    //variables pour la fonction search
+    const searchInput = document.querySelector("[data-search]");
     let characters = [];
 
+    //Fonction qui permet de rechercher un character
+    async function searchCharacter(){
+        try {
+            searchInput.addEventListener("input", e => {
+                const value = e.target.value.toLowerCase(); 
+                characters.forEach(char => {
+                    const isVisible = char.name.toLowerCase().includes(value);
+                    char.element.classList.toggle("hide", !isVisible);
+                })
+            })
+        }
+        catch(err) {
+            console.log(err);
+        }
+    }
+    searchCharacter();
+
+
+
+//Ajout du template dans le HTML avec les données de l'API
     try {
         characters = datas.map(data => {
             const card = characterCardTemplate.content.cloneNode(true).children[0];
@@ -44,13 +67,6 @@ async function getCharacter(){
     }
 
 
-    //search character
-    searchInput.addEventListener("input", e => {
-        const value = e.target.value.toLowerCase(); 
-        characters.forEach(char => {
-            const isVisible = char.name.toLowerCase().includes(value);
-            char.element.classList.toggle("hide", !isVisible);
-        })
-    })
 }
+
 getCharacter();
