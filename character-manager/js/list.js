@@ -1,14 +1,14 @@
 import '../style.scss';
 
 
-//list of characters
+//Fonction qui charge la liste des characters
  async function getCharacter(){
     const api_url = 'https://character-database.becode.xyz/characters';
 
     //get des datas dans l'API
     const response = await axios.get(api_url);
     const datas = response.data;
-    console.log(datas);
+    //console.log(datas);
 
     //fragment
     const characterCardTemplate = document.querySelector("[data-card-template]");
@@ -54,12 +54,29 @@ import '../style.scss';
             cardDescription.textContent = data.shortDescription;
             cardBtn.setAttribute("id", data.id);
             characterCardContainer.append(card);
+
+
+
+            //Show character when click...
+            cardBtn.addEventListener("click",()=>{
+                async function showCharacter(){
+                    const response = await axios.get(api_url + "/" + data.id);
+                    const datas = response.data;
+                    console.log(datas);
+                    
+                }
+                showCharacter();
+
+
+
+            })
             return {
                 name: data.name,
                 image: data.image,
                 cardDescription: data.shortDescription,
                 element: card
             };
+            
         })
     }
     catch(err) {
