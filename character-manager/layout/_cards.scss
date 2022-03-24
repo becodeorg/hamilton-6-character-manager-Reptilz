@@ -47,6 +47,11 @@
             }
         }
     }
+
+//show character when search
+.hide {
+    display: none;
+  }
 }
 
 /***BTN ADD NEW CHARACTER***/
@@ -62,6 +67,8 @@
         font-size: 2.2rem;
     }
 }
+
+
 
 
 /***DESKTOP SCREEN***/

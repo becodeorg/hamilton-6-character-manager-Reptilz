@@ -13,9 +13,12 @@ async function getCharacter(){
     //fragment
     const characterCardTemplate = document.querySelector("[data-card-template]");
     const characterCardContainer = document.querySelector("[data-character-cards-container]");
+    const searchInput = document.querySelector("[data-search]");
+
+    let characters = [];
 
     try {
-        datas.forEach(data => {
+        characters = datas.map(data => {
             const card = characterCardTemplate.content.cloneNode(true).children[0];
          
             const cardImg = card.querySelector(["[data-img]"]);
@@ -28,11 +31,26 @@ async function getCharacter(){
             cardDescription.textContent = data.shortDescription;
             cardBtn.setAttribute("id", data.id);
             characterCardContainer.append(card);
+            return {
+                name: data.name,
+                image: data.image,
+                cardDescription: data.shortDescription,
+                element: card
+            };
         })
     }
     catch(err) {
         console.log(err);
     }
-}
 
+
+    //search character
+    searchInput.addEventListener("input", e => {
+        const value = e.target.value.toLowerCase(); 
+        characters.forEach(char => {
+            const isVisible = char.name.toLowerCase().includes(value);
+            char.element.classList.toggle("hide", !isVisible);
+        })
+    })
+}
 getCharacter();
