@@ -44,12 +44,14 @@ import '../style.scss';
     try {
         characters = datas.map(data => {
             const card = characterCardTemplate.content.cloneNode(true).children[0];
-         
+            
+            //Sélection du DOM à l'intérieur de l'article
             const cardImg = card.querySelector(["[data-img]"]);
             const cardName = card.querySelector("[data-name]");
             const cardDescription = card.querySelector("[data-description]");
             const cardBtn = card.querySelector("[data-btn]");
 
+            //On donne les valeurs de l'API(datas) dans l'article...
             cardName.textContent = data.name;
             cardImg.src = "data:image/gif;base64," + data.image;
             cardDescription.textContent = data.shortDescription;
@@ -58,7 +60,7 @@ import '../style.scss';
 
 
 
-            //Show character when click...
+            //Affiche le character quand on clique sur le bouton 'See Character'
             cardBtn.addEventListener("click",()=>{
                 async function showCharacter(){
                     const response = await axios.get(api_url + "/" + data.id);
@@ -68,14 +70,14 @@ import '../style.scss';
                     const characterModal = document.querySelector("[data-modal-template]");
                     const characterCardContainer = document.querySelector("[data-character-modal-container]");
 
-                    //Sélection du DOM à l'intérieur de l'article
+                    //Sélection du DOM à l'intérieur du modal
                     const modal = characterModal.content.cloneNode(true);
                     const cardImg = modal.querySelector(["[data-img-modal]"]);
                     const cardName = modal.querySelector("[data-name-modal]");
                     const cardShortDescription = modal.querySelector("[data-short-description-modal");
                     const cardDescription = modal.querySelector("[data-description-modal");
 
-                    //On donne les valeurs de l'API(datas) dans l'article
+                    //On donne les valeurs de l'API(datas) dans le modal
                     cardName.textContent = data.name;
                     cardImg.src = "data:image/gif;base64," + data.image;
                     cardShortDescription.textContent = data.shortDescription;
