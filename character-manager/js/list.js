@@ -8,9 +8,9 @@ import '../style.scss';
     //get des datas dans l'API
     const response = await axios.get(api_url);
     const datas = response.data;
-    //console.log(datas);
+    console.log(datas);
 
-    //fragment
+    //list des characters
     const characterCardTemplate = document.querySelector("[data-card-template]");
     const characterCardContainer = document.querySelector("[data-character-cards-container]");
 
@@ -62,7 +62,41 @@ import '../style.scss';
                 async function showCharacter(){
                     const response = await axios.get(api_url + "/" + data.id);
                     const datas = response.data;
-                    console.log(datas);
+                    const id = datas.id;
+
+                    const characterModal = document.querySelector("[data-modal-template]");
+                    const characterCardContainer = document.querySelector("[data-character-modal-container]");
+
+                    const modal = characterModal.content.cloneNode(true);
+                    const cardImg = modal.querySelector(["[data-img-modal]"]);
+                    const cardName = modal.querySelector("[data-name-modal]");
+                    const cardShortDescription = modal.querySelector("[data-short-description-modal");
+                    const cardDescription = modal.querySelector("[data-description-modal");
+
+                    cardName.textContent = data.name;
+                    cardImg.src = "data:image/gif;base64," + data.image;
+                    cardShortDescription.textContent = data.shortDescription;
+                    cardDescription.textContent = data.description;
+                    characterCardContainer.append(modal);
+                    console.log(modal);
+
+                    //change la css quand on clique pour afficher le modal par dessus...
+                    characterCardContainer.style = "visibility: visible";
+
+                    //overlay quand on clique...
+                    const overlay = document.getElementById('overlay');
+                    overlay.style = "opacity: 1";
+
+                    //close le modal...
+                    const close = document.querySelector("[data-close-btn]");
+                    close.addEventListener("click", () =>{
+                        characterCardContainer.style = "display: none";
+                        overlay.style = "opacity: 0";
+
+                        //supprime le modal pour pas en avoir plusieurs...
+                        const removeModal = document.getElementById('modal');
+                        removeModal.remove();
+                    })
                     
                 }
                 showCharacter();
@@ -82,8 +116,6 @@ import '../style.scss';
     catch(err) {
         console.log(err);
     }
-
-
 }
 
 getCharacter();
