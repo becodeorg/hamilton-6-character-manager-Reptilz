@@ -74,7 +74,10 @@
         color: #b8bfd4;
         border: none;
         cursor: pointer;
-
+        transition: .5s;
+        &:hover{
+            color: #ffff;
+        }
     }
 }
 
