@@ -39,6 +39,16 @@ import '../style.scss';
     searchCharacter();
 
 
+    //Fonction qui ajoute un character
+    async function addCharacter(){
+        const btnAddCharacter = document.querySelector("[data-add-character]");
+        btnAddCharacter.addEventListener("click", () => {
+            
+        })
+    }
+    addCharacter();
+
+
 
 //Ajout du template dans le HTML avec les données de l'API
     try {
@@ -101,6 +111,23 @@ import '../style.scss';
                         //supprime le modal pour pas en avoir plusieurs...
                         const removeModal = document.getElementById('modal');
                         removeModal.remove();
+                    })
+
+
+
+                    //Fonction qui supprime un character
+                    const btnDelete = document.querySelector("[data-btn-delete]");
+                     btnDelete.addEventListener("click", () =>{
+                         //alert avec une question de confirmation
+                        function confirmDelete() {
+                            //si OK, alors supprime le character
+                            if (confirm('Are you sure you want to delete this character?')) {
+                               axios.delete(api_url + "/" + data.id);
+                            } else {
+                                return false;
+                            }
+                        }
+                        confirmDelete();
                     })
                     
                 }
